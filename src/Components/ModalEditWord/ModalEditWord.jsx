@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import styles from "./ModalEditWord.module.scss";
 
 const ModalEditWord = ({ word, onClose }) => {
-  const [editedWord, setEditedWord] = useState({
-    ...word,
-  });
+  const [editedWord, setEditedWord] = useState({ ...word });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -12,6 +10,12 @@ const ModalEditWord = ({ word, onClose }) => {
       ...prevState,
       [name]: value,
     }));
+  };
+
+  const handleCancel = () => {
+    // Сброс изменений перед закрытием модального окна
+    setEditedWord({ ...word });
+    onClose();
   };
 
   const handleSave = () => {
@@ -58,9 +62,14 @@ const ModalEditWord = ({ word, onClose }) => {
             required
           />
 
-          <button type="button" onClick={handleSave}>
-            Сохранить
-          </button>
+          <div className={`${styles.buttonGroup}`}>
+            <button type="button" onClick={handleSave}>
+              Сохранить
+            </button>
+            <button type="button" onClick={handleCancel}>
+              Отмена
+            </button>
+          </div>
         </form>
       </div>
     </div>
