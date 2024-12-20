@@ -23,6 +23,7 @@ const WordsList = ({ words }) => {
 
   return (
     <div className={styles.wordsList}>
+      <h1>Изучение английских слов</h1>
       <table className={styles.table}>
         <thead>
           <tr>

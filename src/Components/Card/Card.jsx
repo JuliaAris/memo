@@ -3,12 +3,18 @@ import styles from "/src/Components/Card/Card.module.scss";
 
 const Card = ({ word, isTranslated, onTranslate }) => {
   return (
-    <div className={styles.card}>
-      <h2>{isTranslated ? word.russian : word.english}</h2>
-      <p>{word.transcription}</p>
-      <button onClick={onTranslate} className={styles.translateButton}>
-        {isTranslated ? "Показать перевод" : "Показать перевод"}
-      </button>
+    <div className={styles.cardsPage}>
+      <div className={styles.cardContainer}>
+        <div className={styles.card}>
+          <h2>{word.russian}</h2>
+          <p>{word.transcription}</p>
+          <div>
+            <button onClick={onTranslate} className={styles.translateButton}>
+              {isTranslated ? word.english : "Показать перевод"}
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

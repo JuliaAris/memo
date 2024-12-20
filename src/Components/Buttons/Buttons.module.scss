@@ -1,0 +1,19 @@
+.buttonPrev,
+.buttonNext {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); /* Центрируем кнопки вертикально */
+  background-color: #fff; /* Белый фон для контраста */
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 8px 12px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+.buttonPrev {
+  left: 20px; /* Отступ слева */
+}
+
+.buttonNext {
+  right: 20px; /* Отступ справа */
+}

@@ -5,8 +5,17 @@
   height: 60vh;
 }
 
+.cardsPage {
+  display: flex;
+  justify-content: center; /* Распределяем элементы равномерно */
+  align-items: center; /* Выравнивание по вертикали */
+  height: 50vh; /* Высота страницы */
+  position: relative; /* Для абсолютного позиционирования кнопок */
+}
+
 .cardContainer {
   position: relative;
+
   display: inline-block;
 }
 
@@ -18,30 +27,6 @@
   border: 1px solid black;
   border-radius: 30px;
   text-align: center;
-}
-
-.buttonPrev,
-.buttonNext {
-  font-size: 24px;
-  padding: 10px;
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  outline: none;
-}
-
-.buttonPrev {
-  position: absolute;
-  top: 50%;
-  left: -60px;
-  transform: translateY(-50%);
-}
-
-.buttonNext {
-  position: absolute;
-  top: 50%;
-  right: -60px;
-  transform: translateY(-50%);
 }
 
 .translateButton {

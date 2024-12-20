@@ -6,7 +6,9 @@ import Footer from "/src/Components/Footer/Footer.jsx";
 import WordsList from "/src/Components/WordsList/WordsList.jsx";
 import AddWordForm from "/src/Components/AddWordForm/AddWordForm.jsx";
 import Card from "/src/Components/Card/Card.jsx";
-import styles from "/src/Components/Card/Card.module.scss";
+import Buttons from "/src/Components/Buttons/Buttons.jsx";
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const App = () => {
   const [words, setWords] = useState([]);
@@ -38,8 +40,10 @@ const App = () => {
   }
 
   const handleNext = () => {
+    console.log("Before next:", currentIndex);
     setCurrentIndex((currentIndex + 1) % words.length);
     setIsTranslated(false);
+    console.log("After next:", currentIndex);
   };
 
   const handlePrevious = () => {
@@ -87,32 +91,42 @@ const App = () => {
       console.error("Error updating word:", error);
     }
   };
+
+  const Home = () => {
+    return (
+      <>
+        {<WordsList words={words} onDelete={deleteWord} onEdit={editWord} />}
+        {<AddWordForm onSubmit={addWord} />}
+      </>
+    );
+  };
+
+  const GamePage = () => {
+    return (
+      <>
+        {<Buttons handlePrevious={handlePrevious} handleNext={handleNext} />}
+        {
+          <Card
+            word={words[currentIndex]}
+            isTranslated={isTranslated}
+            onTranslate={toggleTranslation}
+          />
+        }
+      </>
+    );
+  };
+
   return (
     <>
-      <Header />
-      <main>
-        <div>
-          <h1>Изучение английских слов</h1>
-          <WordsList words={words} onDelete={deleteWord} onEdit={editWord} />
-          <AddWordForm onSubmit={addWord} />
-        </div>
-        <div className={styles.app}>
-          <div className={styles.cardContainer}>
-            <button onClick={handlePrevious} className={styles.buttonPrev}>
-              {"<<"}
-            </button>
-            <Card
-              word={words[currentIndex]}
-              isTranslated={isTranslated}
-              onTranslate={toggleTranslation}
-            />
-            <button onClick={handleNext} className={styles.buttonNext}>
-              {">>"}
-            </button>
-          </div>
-        </div>
-      </main>
-      <Footer />
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+
+          <Route path="/gamepage" element={<GamePage />} />
+        </Routes>
+        <Footer />
+      </Router>
     </>
   );
 };
