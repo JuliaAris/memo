@@ -15,6 +15,14 @@ const App = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTranslated, setIsTranslated] = useState(false);
   const [error, setError] = useState(null);
+  const [wordsLearnedCount, setWordsLearnedCount] = useState(0);
+
+  const handleWordLearned = () => {
+    if (!isTranslated) {
+      setWordsLearnedCount((prevCount) => prevCount + 1);
+    } /*setWordsLearnedCount((prevCount) => prevCount + 1);*/
+    // Увеличиваем счетчик на 1 при каждом изучении нового слова
+  };
 
   // Объединенный useEffect для получения данных
   useEffect(() => {
@@ -109,9 +117,13 @@ const App = () => {
           <Card
             word={words[currentIndex]}
             isTranslated={isTranslated}
-            onTranslate={toggleTranslation}
+            onTranslate={() => {
+              handleWordLearned();
+              toggleTranslation();
+            }}
           />
         }
+        <p>Изученные слова: {wordsLearnedCount}</p>
       </>
     );
   };

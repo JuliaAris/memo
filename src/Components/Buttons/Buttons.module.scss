@@ -1,7 +1,7 @@
 .buttonPrev,
 .buttonNext {
   position: absolute;
-  top: 50%;
+  top: 35%;
   transform: translateY(-50%); /* Центрируем кнопки вертикально */
   background-color: #fff; /* Белый фон для контраста */
   border: none;
@@ -11,9 +11,9 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
 .buttonPrev {
-  left: 20px; /* Отступ слева */
+  left: 100px; /* Отступ слева */
 }
 
 .buttonNext {
-  right: 20px; /* Отступ справа */
+  right: 100px; /* Отступ справа */
 }

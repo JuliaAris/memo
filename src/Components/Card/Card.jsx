@@ -1,7 +1,14 @@
-import React, { useState } from "react";
+import React, { useRef, useEffect } from "react";
 import styles from "/src/Components/Card/Card.module.scss";
 
-const Card = ({ word, isTranslated, onTranslate }) => {
+const Card = ({ word, onTranslate, isTranslated }) => {
+  const buttonRef = useRef(null);
+  useEffect(() => {
+    if (buttonRef.current) {
+      buttonRef.current.focus();
+    }
+  }, []);
+
   return (
     <div className={styles.cardsPage}>
       <div className={styles.cardContainer}>

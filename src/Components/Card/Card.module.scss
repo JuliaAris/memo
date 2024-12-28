@@ -10,7 +10,9 @@
   justify-content: center; /* Распределяем элементы равномерно */
   align-items: center; /* Выравнивание по вертикали */
   height: 50vh; /* Высота страницы */
-  position: relative; /* Для абсолютного позиционирования кнопок */
+  position: relative;
+  width: 30vh;
+  margin: 0 auto;
 }
 
 .cardContainer {

@@ -11,7 +11,7 @@ const Header = () => {
             <a href="/">Главная</a>
           </li>
           <li>
-            <a href="/words">Слова</a>
+            <a href="/gamepage">Слова</a>
           </li>
           <li>
             <a href="/about">О нас</a>
