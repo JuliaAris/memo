@@ -17,11 +17,12 @@ const App = () => {
   const [error, setError] = useState(null);
   const [wordsLearnedCount, setWordsLearnedCount] = useState(0);
 
+  const totalWords = words.length;
+
   const handleWordLearned = () => {
-    if (!isTranslated) {
+    if (!isTranslated && wordsLearnedCount < totalWords) {
       setWordsLearnedCount((prevCount) => prevCount + 1);
-    } /*setWordsLearnedCount((prevCount) => prevCount + 1);*/
-    // Увеличиваем счетчик на 1 при каждом изучении нового слова
+    }
   };
 
   // Объединенный useEffect для получения данных
@@ -48,14 +49,12 @@ const App = () => {
   }
 
   const handleNext = () => {
-    console.log("Before next:", currentIndex);
-    setCurrentIndex((currentIndex + 1) % words.length);
+    setCurrentIndex((currentIndex + 1) % totalWords);
     setIsTranslated(false);
-    console.log("After next:", currentIndex);
   };
 
   const handlePrevious = () => {
-    setCurrentIndex(currentIndex === 0 ? words.length - 1 : currentIndex - 1);
+    setCurrentIndex(currentIndex === 0 ? totalWords - 1 : currentIndex - 1);
     setIsTranslated(false);
   };
 
